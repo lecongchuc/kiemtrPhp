@@ -37,6 +37,7 @@ $nhanViensPage = array_slice($nhanViens, $startIndex, $itemsPerPage);
                 <td><?php echo htmlspecialchars($nhanVien->Noi_Sinh, ENT_QUOTES, 'UTF-8'); ?></td>
                 <td><?php echo htmlspecialchars($nhanVien->Ten_Phong, ENT_QUOTES, 'UTF-8'); ?></td>
                 <td><?php echo htmlspecialchars($nhanVien->Luong, ENT_QUOTES, 'UTF-8'); ?></td>
+
             </tr>
         <?php endforeach; ?>
     </tbody>

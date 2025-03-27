@@ -1,4 +1,5 @@
 <?php
+require_once('app/config/database.php');
 require_once('app/models/UserModel.php');
 class LoginController
 {
@@ -27,6 +28,7 @@ class LoginController
                 $errors = $result;
                 include 'app/views/login/login.php';
             } elseif ($result->password == $password) {
+                setcookie('username', $username, time() + (86400 * 30), "/");
                 header('Location: /manguonmo/QL_NhanSu/NhanVien');
             } else {
                 $errors = "Tài khoản hoặc mật khẩu không đúng!";

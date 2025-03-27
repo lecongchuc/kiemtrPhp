@@ -3,6 +3,7 @@
 require_once('app/config/database.php');
 require_once('app/models/NhanVienModel.php');
 require_once('app/models/PhongBanModel.php');
+require_once('app/models/UserModel.php');
 
 class NhanVienController
 {
@@ -40,13 +41,22 @@ class NhanVienController
     public function save()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['idNV'] ?? '';
             $ten = $_POST['ten'] ?? '';
             $phai = $_POST['phai'] ?? null;
             $noiSinh = $_POST['noiSinh'] ?? null;
             $luong = $_POST['luong'] ?? null;
             $maPhongBan = $_POST['maPhongBan'] ?? null;
-
-            $result = $this->nhanVienModel->addNhanVien($ten, $phai, $noiSinh, $luong, $maPhongBan);
+            if ($_COOKIE['username'] != null) {
+                $roleUser = (new UserModel($this->db))->getUserRole($_COOKIE['username']);
+                if ($roleUser != 'admin') {
+                    $errors = "Bạn không có quyền thêm nhân viên!";
+                    include 'app/views/nhanVien/add.php';
+                }
+            } else {
+                header('Location: /manguonmo/QL_NhanSu/NhanVien');
+            }
+            $result = $this->nhanVienModel->addNhanVien($id, $ten, $phai, $noiSinh, $luong, $maPhongBan);
             if (is_array($result)) {
                 $errors = $result;
                 $phongBans = (new PhongBanModel($this->db))->getPhongBans();
@@ -71,7 +81,7 @@ class NhanVienController
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
+            $id = $_POST['idNV'];
             $ten = $_POST['ten'];
             $phai = $_POST['phai'];
             $noiSinh = $_POST['noiSinh'];

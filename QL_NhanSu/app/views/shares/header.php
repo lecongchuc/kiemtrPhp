@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/QL_NhanSu/NhanVien/">Danh sách nhân viên</a>
+                    <a class="nav-link" href="/manguonmo/QL_NhanSu/NhanVien/">Danh sách nhân viên</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/QL_NhanSu/NhanVien/add">Thêm nhân viên</a>
+                    <a class="nav-link" href="/manguonmo/QL_NhanSu/NhanVien/add">Thêm nhân viên</a>
                 </li>
             </ul>
         </div>

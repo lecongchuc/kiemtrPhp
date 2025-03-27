@@ -1,6 +1,6 @@
 <?php include 'app/views/shares/header.php'; ?>
 
-<h1>Thêm sản phẩm mới</h1>
+<h1>Thêm nhân viên mới</h1>
 <?php if (!empty($errors)): ?>
     <div class="alert alert-danger">
         <ul>
@@ -11,30 +11,38 @@
     </div>
 <?php endif; ?>
 
-<form method="POST" action="/manguonmo/webbanhang/Product/save" onsubmit="return validateForm();">
+<form method="POST" action="/manguonmo/QL_NhanSu/NhanVien/save" onsubmit="return validateForm();">
     <div class="form-group">
-        <label for="name">Tên sản phẩm:</label>
-        <input type="text" id="name" name="name" class="form-control" required>
+        <label for="name">Mã Nhân viên:</label>
+        <input type="text" id="idNV" name="idNV" class="form-control" required>
     </div>
     <div class="form-group">
-        <label for="description">Mô tả:</label>
-        <textarea id="description" name="description" class="form-control" required></textarea>
+        <label for="name">Tên Nhân viên:</label>
+        <input type="text" id="ten" name="ten" class="form-control" required>
     </div>
     <div class="form-group">
-        <label for="price">Giá:</label>
-        <input type="number" id="price" name="price" class="form-control" step="0.01" required>
+        <label for="description">Phái:</label>
+        <input type="text" id="phai" name="phai" class="form-control">
     </div>
     <div class="form-group">
-        <label for="category_id">Danh mục:</label>
-        <select id="category_id" name="category_id" class="form-control" required>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?php echo $category->id; ?>"><?php echo htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); ?></option>
+        <label for="description">Nơi sinh:</label>
+        <input type="text" id="noiSinh" name="noiSinh" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="price">Lương:</label>
+        <input type="number" id="luong" name="luong" class="form-control" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="maPhongBan">Phòng ban:</label>
+        <select id="maPhongBan" name="maPhongBan" class="form-control" required>
+            <?php foreach ($phongBans as $phongBan): ?>
+                <option value="<?php echo $phongBan->Ma_Phong; ?>"><?php echo htmlspecialchars($phongBan->Ten_Phong, ENT_QUOTES, 'UTF-8'); ?></option>
             <?php endforeach; ?>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+    <button type="submit" class="btn btn-primary">Thêm nhân viên</button>
 </form>
 
-<a href="/manguonmo/webbanhang/Product/index" class="btn btn-secondary mt-2">Quay lại danh sách sản phẩm</a>
+<a href="/manguonmo/QL_NhanSu/NhanVien/index" class="btn btn-secondary mt-2">Quay lại danh sách nhân viên</a>
 
 <?php include 'app/views/shares/footer.php'; ?>
